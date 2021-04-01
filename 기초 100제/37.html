@@ -16,6 +16,21 @@
          // 출력
          // 혜원(이)가 총 4표로 반장이 되었습니다.
 
+         let input = window.prompt('학생 이름을 입력해주세요.').split(' ');
+         let member = {};
+         let result = '';
+         for (var i = 0; i < input.length; i++) {
+            member[input[i]] = member[input[i]] === undefined ? 1 : (member[input[i]] += 1);
+         }
+
+         console.log(member);
+
+         result = Object.keys(member).reduce(function (a, b) {
+            return member[a] > member[b] ? a : b;
+         });
+
+         console.log(`${result}(이)가 총 ${member[result]}표로 반장이 되었습니다.`);
+
          // 답안
       </script>
    </body>
