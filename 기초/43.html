@@ -13,38 +13,19 @@
 
          // 사용자에게 숫자를 입력받고 이를 2진수를 바꾸고 그 값을 출력해주세요.
 
-         let input = parseInt(window.prompt('숫자를 입력해주세요.'), 10);
-         let arr = [];
+         const input = window.prompt('숫자를 입력해주세요.');
 
-         while (input) {
-            arr.push(input % 2);
-            input = Math.floor(input / 2);
+         var num = input;
+         var arr = [];
+
+         while (num) {
+            arr.push(num % 2);
+            num = Math.floor(num / 2);
          }
 
-         console.log(arr.reverse().join(''));
+         var result = arr.reverse();
 
-         // 답안
-
-         // let a = prompt('10진수를 입력해주세요.');
-         // let b = [];
-         // let result = '';
-
-         // while (a) {
-         //    b.push(a % 2);
-         //    a = parseInt(a / 2, 10);
-         // }
-         // b.reverse();
-
-         // b.forEach((n) => {
-         //    result += n;
-         // });
-
-         // console.log(result);
-
-         // ------------------- 이것도 가능
-
-         // let a = 160;
-         // console.log(a.toString(2))
+         console.log(result);
       </script>
    </body>
 </html>

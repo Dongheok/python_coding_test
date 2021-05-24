@@ -16,54 +16,28 @@
          // 입력 : 97 86 75 66 55 97 85 97 97 95
          // 출력 : 6
 
-         let input = window
-            .prompt('점수를 입력해주세요.')
+         const input = window
+            .prompt('반 학생들의 점수를 입력해주세요.')
             .split(' ')
-            .map((x) => {
-               return parseInt(x, 10);
-            })
             .sort((a, b) => {
                return a - b;
             });
 
          let count = 0;
-         let arr = [];
+         let result = 0;
 
-         while (arr.length < 3) {
+         while (count < 3) {
             let temp = input.pop();
-            if (!arr.includes(temp)) {
-               arr.push(temp);
+            if (!input.includes(temp)) {
+               count += 1;
             }
-            count += 1;
+            result += 1;
          }
 
-         console.log(count);
-
-         // 답안
-         // const scores = prompt('점수입력')
-         //    .split(' ')
-         //    .map(function (n) {
-         //       return parseInt(n, 10);
-         //    });
-
-         // scores.sort((a, b) => {
-         //    return a - b;
-         // });
-
-         // let count = 0;
-         // let arr = [];
-
-         // while (arr.length < 3) {
-         //    let n = scores.pop();
-         //    if (!arr.includes(n)) {
-         //       arr.push(n);
-         //    }
-         //    count += 1;
-         // }
+         console.log(result);
 
          // console.log(count);
-
-         // array.pop(), array.push(), array.includes(), while문을 익힐 수 있었다.
+         // console.log(result);
       </script>
    </body>
 </html>
