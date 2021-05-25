@@ -4,10 +4,11 @@
       <meta charset="UTF-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>문제50 : 버블정렬 구현하기</title>
+      <title>문제50 : 버블정렬, 삽입정렬 구현하기</title>
    </head>
    <body>
       <script>
+         // 버블정렬
          function bubble(arr) {
             let result = arr.slice();
 
@@ -30,6 +31,47 @@
          });
 
          console.log(bubble(items));
+
+         // 삽입정렬
+         // let input = [5, 10, 66, 77, 54, 32, 11, 15];
+         // let sortArr = [];
+         // let length = input.length;
+
+         // function insertion(arr, value) {
+         //    for (var i in arr) {
+         //       if (value < arr[i]) {
+         //          return i;
+         //       }
+         //    }
+         //    return arr.length;
+         // }
+
+         // for (var i = 0; i < length; i++) {
+         //    let value = input.shift();
+         //    let index = insertion(sortArr, value);
+         //    sortArr.splice(index, 0, value);
+         //    console.log(sortArr);
+         // }
+
+         let input = [5, 10, 66, 77, 54, 32, 11, 15];
+         let sortArr = [];
+         let length = input.length;
+
+         function insertion(arr, value) {
+            for (let i in arr) {
+               if (value < arr[i]) {
+                  return i;
+               }
+            }
+            return arr.length;
+         }
+
+         for (var i = 0; i < length; i++) {
+            let value = input.shift();
+            let index = insertion(sortArr, value);
+            sortArr.splice(index, 0, value);
+            console.log(sortArr);
+         }
       </script>
    </body>
 </html>
