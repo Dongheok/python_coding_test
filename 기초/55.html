@@ -25,6 +25,8 @@
             // 원판이 한개면 바로 옮기기
             if (num === 1) {
                route.push([start, end]);
+               // 함수를 멈추지 않으면 계속 재귀하여 무한이 된다.
+               return;
             }
             // n-1개의 원판을 경유기둥으로
             hanoi(num - 1, start, temp, end);
