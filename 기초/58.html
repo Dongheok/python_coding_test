@@ -15,18 +15,17 @@
 
          // 예를 들어, 123456789를 입력받았으면 123,456,789를 출력해야 합니다.
 
-         let input = '12345678900000';
+         let input = '123456789';
 
          function fn(str) {
-            let arr = str.split('');
-            let length = str.length;
-            for (let i in arr) {
-               arr.splice(length - 4 * i, 0, '-');
+            if (str.length <= 3) {
+               return str;
+            } else {
+               return fn(str.slice(0, str.length - 3)) + ',' + str.slice(str.length - 3);
             }
-            console.log(arr.join(''));
          }
 
-         fn(input);
+         console.log(fn(input));
       </script>
    </body>
 </html>
