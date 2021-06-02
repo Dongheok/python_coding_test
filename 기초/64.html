@@ -20,6 +20,23 @@
          // 출력
          // 가장 적게 옮길 수 있는 횟수를 출력합니다.
          // 만약 어떻게 해도 정량이 N이 되지 않는다면 -1을 출력합니다.
+
+         let input = parseInt(prompt('정량을 입력하세요'), 10);
+         let result = 0;
+
+         while (true) {
+            if (input % 7 === 0) {
+               result += parseInt(input / 7, 10);
+               console.log(result);
+               break;
+            }
+            input -= 3;
+            result += 1;
+            if (input < 0) {
+               console.log(-1);
+               break;
+            }
+         }
       </script>
    </body>
 </html>
