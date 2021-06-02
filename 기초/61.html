@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>문제61 : 문자열 압축하기</title>
+   </head>
+   <body>
+      <script>
+         // 문자열을 입력받고 연속되는 문자열을 압축해서 표현하고 싶습니다.
+
+         // 입력
+         // aaabbbbcdddd
+
+         // 출력
+         // a3b4c1d4
+
+         // const input = window.prompt('문자열을 입력해주세요.').split('');
+         const input = 'aaabbbbcdddd'.split('');
+
+         function fn(str) {
+            let count = 0;
+            let value = str[0];
+            let tempObj = {};
+            for (let i in str) {
+               if (str[i] === value) {
+                  count += 1;
+               } else {
+                  tempObj[`${value}`] = count;
+                  count = 1;
+                  value = str[i];
+               }
+               if (str.length === parseInt(i, 10) + 1) {
+                  tempObj[`${value}`] = count;
+               }
+            }
+
+            let tempEntries = Object.entries(tempObj);
+            let tempResult = [];
+            let result = [];
+            for (let i in tempEntries) {
+               let tempArr = tempEntries[i].join('');
+               tempResult.push(tempArr);
+            }
+
+            result = tempResult.join('');
+
+            return result;
+         }
+
+         console.log(fn(input));
+
+         // const user_s = new String(prompt('문자열을 입력하세요'));
+         // let result_s = '';
+         // let store_s = user_s[0];
+         // let count = 0;
+
+         // for (let i of user_s){
+         //   if (i === store_s){
+         //     count += 1;
+         //   } else{
+         //     result_s += store_s + String(count);
+         //     store_s = i;
+         //     count = 1;
+         //   }
+         // }
+
+         // result_s += store_s + String(count);
+         // console.log(result_s);
+      </script>
+   </body>
+</html>
