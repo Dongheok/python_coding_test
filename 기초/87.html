@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>문제87 : 천하제일 먹기 대회</title>
+   </head>
+   <body>
+      <script>
+         // 천하제일 먹기 대회가 개최되었습니다.
+         // 이 대회는 정해진 시간이 끝난 후 음식을 먹은 그릇 개수를 파악한 후 각 선수들의 등수를 매깁니다.
+
+         // 1. 같은 이름의 선수는 없습니다.
+         // 2. 접시의 수가 같은 경우는 없습니다.
+
+         // 입력1
+         // 손오공 야모챠 메지터 비콜로
+         // 70 10 55 40
+
+         // 출력1
+         // {'손오공': 1, '메지터': 2, '비콜로': 3, '야모챠': 4}
+
+         // 입력2
+         // ["홍길동","엄석대","연개소문","김첨지"]
+         // [2, 1, 10, 0]
+
+         // 출력2
+         // {'연개소문': 1, '홍길동': 2, '엄석대': 3, '김첨지': 4}
+
+         let name = '손오공 야모챠 메지터 비콜로'.split(' ');
+         let num = '70 10 55 40'.split(' ').map((x) => parseInt(x, 10));
+
+         function solution(name, num) {
+            let arr = [];
+            let obj = {};
+            for (let i in name) {
+               arr.push([name[i], num[i]]);
+            }
+            arr.sort((a, b) => {
+               return b[1] - a[1];
+            });
+            for (let i in arr) {
+               obj[arr[i][0]] = parseInt(i, 10) + 1;
+            }
+            console.log(obj);
+         }
+
+         solution(name, num);
+      </script>
+   </body>
+</html>
