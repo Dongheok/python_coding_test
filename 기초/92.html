@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>문제92 : 키보드 고장</title>
+   </head>
+   <body>
+      <script>
+         // P 회사의 회계를 처리하던 은정은 커피를 마시다가 키보드에 커피를 쏟고 말았습니다.
+         // 휴지로 닦고 말려보았지만 숫자 3, 4, 6이 도통 눌리지 않습니다.
+         // 10분 뒤, 모든 직원들에게 월급을 입금해 주어야 합니다.
+         // 여유 키보드는 없으며, 프로그래밍을 매우 잘하고, 모든 작업을 수작업으로 하고 있습니다.
+
+         // 이에 눌리지 않는 키보드를 누르지 않고 월급 입금을 두 번에 나눠주고 싶습니다.
+
+         // 1. 직원은 2000명이며, 3초 이내 수행을 해야합니다.
+         // 2. 입력값의 형식은 csv파일형식이며 이과장 '3,000,000', 'S은행', '100-0000-0000-000' 형식으로 주어집니다.
+         // 3. 출력값의 형식은 csv파일형식이며 이과장 '1,500,000', '1,500,000', 'S은행', '100-0000-0000-000' 입니다. 또는 '1,000,000', '2,000,000', 'S은행', '100-0000-0000-000' 도 괜찮습니다.
+
+         let input = `이대표,'333,356,766','S은행','100-0000-0000-001'
+최차장,'5,000,000','S은행','100-0000-0000-002'
+이과장,'3,200,000','S은행','100-0000-0000-003'
+홍팀장,'3,300,000','S은행','100-0000-0000-004'
+이대리,'5,300,000','S은행','100-0000-0000-005'`;
+
+         let tempInput = input.split('\n');
+         let data = [];
+         let tempData = [];
+         for (const a of tempInput) {
+            let temp = a.split(',');
+            tempData.push(temp);
+            let value = temp.slice(1, temp.length - 2).join('');
+            data.push(value);
+         }
+         let result = [];
+         for (const money of data) {
+            let money_1 = '';
+            let money_2 = '';
+            for (const half of money) {
+               if (half != `'`) {
+                  if (half == 3) {
+                     money_1 += '1';
+                     money_2 += '2';
+                  } else if (half == 4) {
+                     money_1 += '2';
+                     money_2 += '2';
+                  } else if (half == 6) {
+                     money_1 += '1';
+                     money_2 += '5';
+                  } else {
+                     money_1 += half;
+                     money_2 += '0';
+                  }
+               }
+            }
+            result.push([parseInt(money_1, 10), parseInt(money_2, 10)]);
+         }
+
+         for (let i in result) {
+            console.log(
+               `${tempData[i][0]}, ${result[i][0]}, ${result[i][1]}, ${tempData[i][tempData.length - 1]}, ${tempData[i][tempData.length]}`
+            );
+         }
+      </script>
+   </body>
+</html>

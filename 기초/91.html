@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>문제 91 : 반평균 등수</title>
+   </head>
+   <body>
+      <script>
+         // 한 반에 30명인 학생, 총 7개의 반 점수가 '국어, 영어, 수학, 사회, 과학' 순서로 있는 다중 리스트를 랜덤 한 값으로 만들어주시고 아래 값을 모두 출력하세요.
+
+         // 1. 반 점수 모두가 담긴 전교 점수 다중 리스트를 만들어주세요.
+         // 2. 반 평균을 구하세요.
+         // 3. 반 1등 점수를 구하세요.
+         // 4. 전교 평균을 구하세요.
+
+         // ---#1---
+
+         let total_score = [];
+         // 한 학교의 각 반 점수
+         for (let i = 0; i < 7; i++) {
+            let class_score = [];
+            // 한 반에 각 학생 점수
+            for (let j = 0; j < 30; j++) {
+               let student_score = [];
+               // 한 명의 각 과목 점수
+               for (let k = 0; k < 5; k++) {
+                  let random = Math.floor(Math.random() * 100) + 1;
+                  student_score.push(random);
+               }
+               class_score.push(student_score);
+               student_score = [];
+            }
+            total_score.push(class_score);
+            class_score = [];
+         }
+
+         // console.log(total_score);
+
+         // ---#2---
+
+         let total_avg = [];
+         let class_avg = [];
+         let student_avg = 0;
+         let student_sum = 0;
+         let no_1 = 0;
+         for (const c of total_score) {
+            for (const s of c) {
+               student_sum = s.reduce((a, b) => {
+                  return a + b;
+               });
+               student_avg = student_sum / 5;
+               class_avg.push(student_avg);
+               if (no_1 <= student_avg) {
+                  no_1 = student_avg;
+               }
+            }
+
+            // ---#3---
+
+            console.log(no_1);
+
+            no_1 = 0;
+
+            total_avg.push(
+               class_avg.reduce((a, b) => {
+                  return a + b;
+               }) / 30
+            );
+            class_avg = [];
+         }
+         console.log(total_avg);
+
+         // ---#4---
+
+         console.log(total_avg.reduce((a, b) => a + b) / 7);
+      </script>
+   </body>
+</html>
